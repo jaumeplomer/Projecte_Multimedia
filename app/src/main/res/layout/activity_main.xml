@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:layout_width="281dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="25dp"
+        android:text="Nom"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewDineros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="15dp"
+        android:text="Dineros"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNom" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="277dp"
+        android:layout_height="511dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDineros"
+        app:srcCompat="@drawable/persona" />
+
+    <TextView
+        android:id="@+id/textViewVida"
+        android:layout_width="78dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="Vida"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDineros" />
+
+    <TextView
+        android:id="@+id/textViewVelocitat"
+        android:layout_width="78dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:text="Veloc"
+        android:textSize="30dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewVida"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDineros" />
+
+    <TextView
+        android:id="@+id/textViewDefensa"
+        android:layout_width="78dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Armor"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVida" />
+
+    <TextView
+        android:id="@+id/textViewAtac"
+        android:layout_width="78dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="20dp"
+        android:text="Attack"
+        android:textSize="30dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewDefensa"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVelocitat" />
+
+    <ImageView
+        android:id="@+id/imageViewCasco"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="86dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDineros"
+        app:srcCompat="@drawable/casco" />
+
+    <ImageView
+        android:id="@+id/imageViewArmor"
+        android:layout_width="103dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCasco"
+        app:srcCompat="@drawable/armadura" />
+
+    <ImageView
+        android:id="@+id/imageViewBoots"
+        android:layout_width="122dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewArmor"
+        app:srcCompat="@drawable/botes" />
+
+    <ImageView
+        android:id="@+id/imageViewSword"
+        android:layout_width="118dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:rotation="335"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewArmor"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDineros"
+        app:srcCompat="@drawable/sword" />
+
+    <ImageView
+        android:id="@+id/imageViewBallesta"
+        android:layout_width="108dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="230dp"
+        android:rotation="300"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewArmor"
+        app:layout_constraintTop_toTopOf="@+id/textViewVida"
+        app:srcCompat="@drawable/ballesta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
