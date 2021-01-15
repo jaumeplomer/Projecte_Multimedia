@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
 
     public Item persona;
     public ArrayList<Item> test;
+    public TextView cash,atac,armadura,vida,velocitat;
+    public ImageView casc, armor, boots, sword, secundaria;
+    public int cost = 0, arm = 0, at = 0, vd = 0, vel = 0;
+    public int imgCasc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,27 +26,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Definim tots els elements xml que trobarem a la MainActivity
-        ImageView casc = findViewById(R.id.imageViewCasco);
-        ImageView armor = findViewById(R.id.imageViewArmor);
-        ImageView boots = findViewById(R.id.imageViewBoots);
-        ImageView sword = findViewById(R.id.imageViewSword);
-        ImageView secundaria = findViewById(R.id.imageViewBallesta);
-        TextView cash = findViewById(R.id.textViewDineros);
-        TextView atac = findViewById(R.id.textViewAtac);
-        TextView armadura = findViewById(R.id.textViewDefensa);
-        TextView vida = findViewById(R.id.textViewVida);
-        TextView velocitat = findViewById(R.id.textViewVelocitat);
+        casc = findViewById(R.id.imageViewCasco);
+        armor = findViewById(R.id.imageViewArmor);
+        boots = findViewById(R.id.imageViewBoots);
+        sword = findViewById(R.id.imageViewSword);
+        secundaria = findViewById(R.id.imageViewBallesta);
 
+        cash = findViewById(R.id.textViewDineros);
+        atac = findViewById(R.id.textViewAtac);
+        armadura = findViewById(R.id.textViewDefensa);
+        vida = findViewById(R.id.textViewVida);
+        velocitat = findViewById(R.id.textViewVelocitat);
+
+        //Aqui hi ha els listeners de les 5 imatges, que llançen un intent amb un codi per saber quin item s'ha pitjat. Obrin la LlistaActivity.
+        clickListeners();
 
         //Cream un item persona amb el seu constructor
-        persona = new Item(null,0,20,100,50,2000,R.drawable.casco,R.drawable.armadura,R.drawable.sword,R.drawable.ballesta,R.drawable.botes);
+        persona = new Item(null,100,100,100,100,1000,R.drawable.casco,R.drawable.armadura,R.drawable.sword,R.drawable.ballesta,R.drawable.botes);
 
         //Cream un item objecte amb el seu constructor
-        Item casco = new Item("casco 1", R.drawable.casco1, 50, 0, 10, 0, 150, 1);
-        Item pit = new Item("armor 1", R.drawable.armadura1, 200, 0, 10, 0, 300,2);
-        Item botes = new Item("botes 1", R.drawable.botes1, 20, 0, 0, 50, 75,3);
-        Item espasa = new Item("espasa 1", R.drawable.espasa1, 0, 100, 0, 50, 500,4);
-        Item secun = new Item("secun 1", R.drawable.pistola, 0, 100, 0, 0, 100,5);
+        Item casco = new Item("casco 1", R.drawable.casco1, 0, 0, 0, 0, 100, 1);
+        Item pit = new Item("armor 1", R.drawable.armadura1, 0, 0, 0, 0, 0,2);
+        Item botes = new Item("botes 1", R.drawable.botes1, 0, 0, 0, 0, 200,3);
+        Item espasa = new Item("espasa 1", R.drawable.espasa1, 0, 0, 0, 0, 0,4);
+        Item secun = new Item("secun 1", R.drawable.pistola, 0, 0, 0, 0, 0,5);
 
         //Llista on ficarem els items equipats per calcular després els valors
         test = new ArrayList<>();
@@ -52,21 +59,102 @@ public class MainActivity extends AppCompatActivity {
         test.add(espasa);
         test.add(secun);
 
-        int cost = 0;
+        sumarValorsItems();
+        if (cost > 0)
+        {
+            persona.setPreu(persona.preu - cost);
+        }else{
+            persona.setPreu(persona.preu + cost);
+        }
+        persona.setPreu(persona.preu - cost);
+        persona.setArmadura(persona.armadura + arm);
+        persona.setAtac(persona.atac + at);
+        persona.setVida(persona.vida + vd);
+        persona.setVelocitat(persona.velocitat + vel);
+
+        //Aqui assignam els valors de l'item persona als elements XML.
+        assignarXml();
+
+        //Aqui recuperam l'intent i l'objecte de la EquipamentActivity.
+        //De prova, assignam el valor a l'armadura i a la foto.
+        try
+        {
+            Intent intent = getIntent();
+            Item obj = intent.getParcelableExtra("nou");
+
+            int a = obj.getCodi();
+            for (int i = 0; i < test.size() - 1; i++)
+            {
+                if (test.get(i).getCodi() == a)
+                {
+                    test.set(i,obj);
+                    switch (a)
+                    {
+                        case 1:
+                            casc.setImageResource(obj.getImg());
+                            break;
+                        case 2:
+                            armor.setImageResource(obj.getImg());
+                            break;
+                        case 3:
+                            boots.setImageResource(obj.getImg());
+                            break;
+                        case 4:
+                            sword.setImageResource(obj.getImg());
+                            break;
+                        case 5:
+                            secundaria.setImageResource(obj.getImg());
+                            break;
+                    }
+                }
+            }
+
+            sumarValorsItems();
+
+            persona.setPreu(persona.preu - cost);
+            persona.setArmadura(persona.armadura + arm);
+            persona.setAtac(persona.atac + at);
+            persona.setVida(persona.vida + vd);
+            persona.setVelocitat(persona.velocitat + vel);
+
+            assignarXml();
+
+            //armadura.setText(String.valueOf(persona.getArmadura() + obj.getArmadura()));
+
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this,"Error",Toast.LENGTH_LONG);
+        }
+
+    }
+
+    public void sumarValorsItems()
+    {
+        cost = 0; arm = 0; at = 0; vd = 0; vel = 0;
+
         for (int i = 0; i <= test.size() - 1; i++)
         {
             cost += test.get(i).getPreu();
+            arm += test.get(i).getArmadura();
+            at += test.get(i).getAtac();
+            vd += test.get(i).getVida();
+            vel += test.get(i).getVelocitat();
         }
-        persona.setPreu(persona.preu - cost);
+    }
 
-        //Aqui assignam els valors de l'item persona als elements XML.
+
+    public void assignarXml()
+    {
         cash.setText("or" + persona.getPreu());
         atac.setText("at" + persona.getAtac());
         armadura.setText("ar" + persona.getArmadura());
-        vida.setText("vida" + persona.getVida());
+        vida.setText("vd" + persona.getVida());
         velocitat.setText("vel" + persona.getVelocitat());
+    }
 
-        //Aqui hi ha els listeners de les 5 imatges, que llançen un intent amb un codi per saber quin item s'ha pitjat. Obrin la LlistaActivity.
+    public void clickListeners()
+    {
         casc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,32 +199,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        //Aqui recuperam l'intent i l'objecte de la EquipamentActivity.
-        //De prova, assignam el valor a l'armadura i a la foto.
-        try
-        {
-            Intent intent = getIntent();
-            Item obj = intent.getParcelableExtra("nou");
-
-            /*for(int i = 0; i <= test.size(); i++)
-            {
-               /* if (test.get(i).getCodi() == obj.codi)
-                {
-                    test.remove(test.get(i));
-                    test.add(obj);
-                }*/
-
-            armadura.setText(String.valueOf(persona.getArmadura() + obj.getArmadura()));
-            //test.add(obj);
-            casc.setImageResource(obj.getImg());
-
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this,"Error",Toast.LENGTH_LONG);
-        }
-
     }
 }
