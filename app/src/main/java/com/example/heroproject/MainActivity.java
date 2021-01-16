@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         test.add(secun);
 
         sumarValorsItems();
+
         if (cost > 0)
         {
             persona.setPreu(persona.preu - cost);
@@ -91,19 +92,19 @@ public class MainActivity extends AppCompatActivity {
                     switch (a)
                     {
                         case 1:
-                            casc.setImageResource(obj.getImg());
+                            persona.setImgCasc(obj.getImg());
                             break;
                         case 2:
-                            armor.setImageResource(obj.getImg());
+                            persona.setImgArmadura(obj.getImg());
                             break;
                         case 3:
-                            boots.setImageResource(obj.getImg());
+                            persona.setImgBotes(obj.getImg());
                             break;
                         case 4:
-                            sword.setImageResource(obj.getImg());
+                            persona.setImgArma(obj.getImg());
                             break;
                         case 5:
-                            secundaria.setImageResource(obj.getImg());
+                            persona.setImgSecundaria(obj.getImg());
                             break;
                     }
                 }
@@ -119,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
             assignarXml();
 
-            //armadura.setText(String.valueOf(persona.getArmadura() + obj.getArmadura()));
 
         }
         catch(Exception e)
@@ -151,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
         armadura.setText("ar" + persona.getArmadura());
         vida.setText("vd" + persona.getVida());
         velocitat.setText("vel" + persona.getVelocitat());
+        casc.setImageResource(persona.getImgCasc());
+        armor.setImageResource(persona.getImgArmadura());
+        boots.setImageResource(persona.getImgBotes());
+        sword.setImageResource(persona.getImgArma());
+        secundaria.setImageResource(persona.getImgSecundaria());
     }
 
     public void clickListeners()

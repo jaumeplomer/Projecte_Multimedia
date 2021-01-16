@@ -56,6 +56,7 @@ public class LlistaActivity extends AppCompatActivity {
                     }
                 });
                 break;
+
             //Feim el mateix que al case 1 per a tots els case
             case 2:
                 armadures.add(new Item("armor 1", R.drawable.armadura1, 200, 0, 10, 0, 300,2));
