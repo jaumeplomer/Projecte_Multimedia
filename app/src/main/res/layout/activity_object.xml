@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFC445"
-    tools:context=".EquipmentActivity">
+    tools:context=".EquipamentActivity">
 
     <TextView
         android:id="@+id/NomTextView"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/VidaTextView" />
 
     <TextView
-        android:id="@+id/Preu"
+        android:id="@+id/PreuTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -85,7 +85,7 @@
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Preu"
+        app:layout_constraintTop_toBottomOf="@+id/PreuTextView"
         app:srcCompat="@drawable/ic_launcher_background"
         tools:ignore="VectorDrawableCompat" />
 

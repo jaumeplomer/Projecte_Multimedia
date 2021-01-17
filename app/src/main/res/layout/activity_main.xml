@@ -40,47 +40,46 @@
 
     <TextView
         android:id="@+id/textViewVida"
-        android:layout_width="78dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
         android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
         android:text="Vida"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDineros" />
 
     <TextView
         android:id="@+id/textViewVelocitat"
-        android:layout_width="78dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:text="Veloc"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/textViewVida"
         app:layout_constraintTop_toBottomOf="@+id/textViewDineros" />
 
     <TextView
         android:id="@+id/textViewDefensa"
-        android:layout_width="78dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         android:text="Armor"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewVida" />
 
     <TextView
         android:id="@+id/textViewAtac"
-        android:layout_width="78dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:text="Attack"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/textViewDefensa"
         app:layout_constraintTop_toBottomOf="@+id/textViewVelocitat" />
 

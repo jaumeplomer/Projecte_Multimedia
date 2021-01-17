@@ -26,7 +26,7 @@ public class EquipamentActivity extends AppCompatActivity {
         TextView atac = findViewById(R.id.AtacTextView);
         TextView vida = findViewById(R.id.VidaTextView);
         TextView velocitat = findViewById(R.id.VelocitatTextView);
-        TextView preuItem = findViewById(R.id.Preu);
+        TextView preuItem = findViewById(R.id.PreuTextView);
         ImageView foto = findViewById(R.id.Imatge);
 
         //Rebem l'objecte llançat a la LlistaActivity amb un getIntent
@@ -43,12 +43,12 @@ public class EquipamentActivity extends AppCompatActivity {
         preu = item.getPreu();
 
         //Assignam els valors guardats als textView de l'xml
-        nom.setText(titol);
-        armadura.setText(String.valueOf(masArmadura));
-        atac.setText(String.valueOf(masAtaque));
-        vida.setText(String.valueOf(masVida));
-        velocitat.setText(String.valueOf(masVelocidad));
-        preuItem.setText(String.valueOf(preu));
+        nom.setText("Nom: " + titol);
+        armadura.setText("Armadura: " + masArmadura);
+        atac.setText("Atac: " + masAtaque);
+        vida.setText("Vida: " + masVida);
+        velocitat.setText("Velocitat: " + masVelocidad);
+        preuItem.setText("Preu: " + preu);
         foto.setImageResource(img);
 
         //Definim el boto i amb un clickListener enviam l'objecte a la MainActivity amb un intent

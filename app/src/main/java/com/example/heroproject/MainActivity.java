@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Item persona;
+    public Item persona, casco, pit, botes, espasa, secun;
     public ArrayList<Item> test;
     public TextView cash,atac,armadura,vida,velocitat;
     public ImageView casc, armor, boots, sword, secundaria;
@@ -42,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
         clickListeners();
 
         //Cream un item persona amb el seu constructor
-        persona = new Item(null,100,100,100,100,1000,R.drawable.casco,R.drawable.armadura,R.drawable.sword,R.drawable.ballesta,R.drawable.botes);
+        persona = new Item(null,100,100,100,100,1000/*,null,R.drawable.armadura,R.drawable.sword,R.drawable.ballesta,R.drawable.botes*/);
 
         //Cream un item objecte amb el seu constructor
-        Item casco = new Item("casco 1", R.drawable.casco1, 0, 0, 0, 0, 100, 1);
-        Item pit = new Item("armor 1", R.drawable.armadura1, 0, 0, 0, 0, 0,2);
-        Item botes = new Item("botes 1", R.drawable.botes1, 0, 0, 0, 0, 200,3);
-        Item espasa = new Item("espasa 1", R.drawable.espasa1, 0, 0, 0, 0, 0,4);
-        Item secun = new Item("secun 1", R.drawable.pistola, 0, 0, 0, 0, 0,5);
+        casco = new Item("casco 1", R.drawable.casco, 0, 0, 50, 0, 100, 1);
+        pit = new Item("armor 1", R.drawable.armadura, 100, 0, 0, 0, 0,2);
+        botes = new Item("botes 1", R.drawable.botes, 0, 0, 0, 20, 200,3);
+        espasa = new Item("espasa 1", R.drawable.sword, 0, 50, 0, 0, 0,4);
+        secun = new Item("secun 1", R.drawable.ballesta, 0, 0, 0, 0, 0,5);
 
         //Llista on ficarem els items equipats per calcular després els valors
         test = new ArrayList<>();
@@ -61,19 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         sumarValorsItems();
 
-        if (cost > 0)
-        {
-            persona.setPreu(persona.preu - cost);
-        }else{
-            persona.setPreu(persona.preu + cost);
-        }
-        persona.setPreu(persona.preu - cost);
-        persona.setArmadura(persona.armadura + arm);
-        persona.setAtac(persona.atac + at);
-        persona.setVida(persona.vida + vd);
-        persona.setVelocitat(persona.velocitat + vel);
+        assignarPersona();
 
-        //Aqui assignam els valors de l'item persona als elements XML.
         assignarXml();
 
         //Aqui recuperam l'intent i l'objecte de la EquipamentActivity.
@@ -89,38 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 if (test.get(i).getCodi() == a)
                 {
                     test.set(i,obj);
-                    switch (a)
-                    {
-                        case 1:
-                            persona.setImgCasc(obj.getImg());
-                            break;
-                        case 2:
-                            persona.setImgArmadura(obj.getImg());
-                            break;
-                        case 3:
-                            persona.setImgBotes(obj.getImg());
-                            break;
-                        case 4:
-                            persona.setImgArma(obj.getImg());
-                            break;
-                        case 5:
-                            persona.setImgSecundaria(obj.getImg());
-                            break;
-                    }
+                    sumarValorsItems();
+                    assignarPersona();
+                    assignarXml();
                 }
             }
-
-            sumarValorsItems();
-
-            persona.setPreu(persona.preu - cost);
-            persona.setArmadura(persona.armadura + arm);
-            persona.setAtac(persona.atac + at);
-            persona.setVida(persona.vida + vd);
-            persona.setVelocitat(persona.velocitat + vel);
-
-            assignarXml();
-
-
         }
         catch(Exception e)
         {
@@ -143,14 +105,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void assignarPersona()
+    {
+        persona.setPreu(persona.preu - cost);
+        persona.setArmadura(persona.armadura + arm);
+        persona.setAtac(persona.atac + at);
+        persona.setVida(persona.vida + vd);
+        persona.setVelocitat(persona.velocitat + vel);
+
+        persona.setImgCasc(test.get(0).getImg());
+        persona.setImgArmadura(test.get(1).getImg());
+        persona.setImgBotes(test.get(2).getImg());
+        persona.setImgArma(test.get(3).getImg());
+        persona.setImgSecundaria(test.get(4).getImg());
+    }
 
     public void assignarXml()
     {
-        cash.setText("or" + persona.getPreu());
-        atac.setText("at" + persona.getAtac());
-        armadura.setText("ar" + persona.getArmadura());
-        vida.setText("vd" + persona.getVida());
-        velocitat.setText("vel" + persona.getVelocitat());
+        cash.setText("Or: " + persona.getPreu());
+        atac.setText("Atac: " + persona.getAtac());
+        armadura.setText("Armadura: " + persona.getArmadura());
+        vida.setText("Vida: " + persona.getVida());
+        velocitat.setText("Velocitat: " + persona.getVelocitat());
+
         casc.setImageResource(persona.getImgCasc());
         armor.setImageResource(persona.getImgArmadura());
         boots.setImageResource(persona.getImgBotes());

@@ -1,5 +1,6 @@
 package com.example.heroproject;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -37,21 +38,21 @@ public class Adaptador extends ArrayAdapter<Item> {
         View view = inflater.inflate(R.layout.item_llista, null);
 
         //Guardam els elements XML segons el seu id
-        TextView textTittle = (TextView) view.findViewById(R.id.titol);
-        TextView textArmor =  (TextView) view.findViewById(R.id.categoria1);
-        TextView textAtac =  (TextView) view.findViewById(R.id.categoria2);
-        TextView textVida =  (TextView) view.findViewById(R.id.categoria3);
-        TextView textVelo =  (TextView) view.findViewById(R.id.categoria4);
-        TextView textPreu =  (TextView) view.findViewById(R.id.preu);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        TextView textTittle = view.findViewById(R.id.titol);
+        TextView textArmor = view.findViewById(R.id.categoria1);
+        TextView textAtac = view.findViewById(R.id.categoria2);
+        TextView textVida = view.findViewById(R.id.categoria3);
+        TextView textVelo = view.findViewById(R.id.categoria4);
+        TextView textPreu = view.findViewById(R.id.preu);
+        ImageView imageView = view.findViewById(R.id.imageView);
 
         //Els omplim amb els getters de la classe Item.
-        textTittle.setText(item.getNom());
-        textArmor.setText(String.valueOf(item.getArmadura()));
-        textAtac.setText(String.valueOf(item.getAtac()));
-        textVida.setText(String.valueOf(item.getVida()));
-        textVelo.setText(String.valueOf(item.getVelocitat()));
-        textPreu.setText(String.valueOf(item.getPreu()));
+        textTittle.setText("Nom: " + item.getNom());
+        textArmor.setText("Armadura: +" + item.getArmadura());
+        textAtac.setText("Atac: +" + item.getAtac());
+        textVida.setText("Vida: +" + item.getVida());
+        textVelo.setText("Velocitat: +" + item.getVelocitat());
+        textPreu.setText("Preu: " + item.getPreu());
         imageView.setImageResource(item.getImg());
 
         //Retornam la vista que hem omplit.
