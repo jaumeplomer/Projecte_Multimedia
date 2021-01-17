@@ -23,18 +23,13 @@ public class Item implements Parcelable {
     }
 
     //Constructor a utilitzar per la persona
-    public Item(String nom, int armadura, int atac, int vida, int velocitat, int preu/*, int imgCasc, int imgArmadura, int imgArma, int imgSecundaria, int imgBotes*/) {
+    public Item(String nom, int armadura, int atac, int vida, int velocitat, int preu) {
         this.nom = nom;
         this.armadura = armadura;
         this.atac = atac;
         this.vida = vida;
         this.velocitat = velocitat;
         this.preu = preu;
-        this.imgCasc = imgCasc;
-        this.imgArmadura = imgArmadura;
-        this.imgArma = imgArma;
-        this.imgSecundaria = imgSecundaria;
-        this.imgBotes = imgBotes;
     }
 
     protected Item(Parcel in) {

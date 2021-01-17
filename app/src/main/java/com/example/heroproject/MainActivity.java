@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView cash,atac,armadura,vida,velocitat;
     public ImageView casc, armor, boots, sword, secundaria;
     public int cost = 0, arm = 0, at = 0, vd = 0, vel = 0;
-    public int imgCasc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         clickListeners();
 
         //Cream un item persona amb el seu constructor
-        persona = new Item(null,100,100,100,100,1000/*,null,R.drawable.armadura,R.drawable.sword,R.drawable.ballesta,R.drawable.botes*/);
+        persona = new Item(null,100,100,100,100,1000);
 
         //Cream un item objecte amb el seu constructor
         casco = new Item("casco 1", R.drawable.casco, 0, 0, 50, 0, 100, 1);
@@ -60,9 +60,7 @@ public class MainActivity extends AppCompatActivity {
         test.add(secun);
 
         sumarValorsItems();
-
         assignarPersona();
-
         assignarXml();
 
         //Aqui recuperam l'intent i l'objecte de la EquipamentActivity.
