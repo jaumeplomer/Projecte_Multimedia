@@ -1,5 +1,6 @@
 package com.example.heroproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,17 +32,18 @@ public class LlistaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llista);
 
+        llista = findViewById(R.id.llistaItems);
+
         //Agafam el codi que rebem amb l'intent per omplir una llista o una altre. Aquest codi ens diu si s'ha pitjat una imatge o una altre.
         codi = getIntent().getExtras();
         int codiObtingut = codi.getInt("codi");
-        llista = findViewById(R.id.llistaItems);
 
         //En funcio de la imatge pitjada, carregarem items a una llista o a l'altre, i la mostrarem amb l'Adaptador.
         switch(codiObtingut) {
             case 1:
                 //afegim objectes a la llista d'Items cascos
-                cascos.add(new Item("casco 1", R.drawable.casco1, 50, 0, 10, 0, 150,1));
-                cascos.add(new Item("casco 2", R.drawable.casco, 60, 0, 0, 0, 100,1));
+                cascos.add(new Item("cascoNew", R.drawable.casco1, 0, 0, 0, 0, 200,1));
+                cascos.add(new Item("casco 2", R.drawable.casco, 0, 0, 0, 0, 100,1));
 
                 //feim l'adapter i omplim la llista
                 adaptador = new Adaptador(this,R.layout.item_llista, cascos);
@@ -52,6 +54,7 @@ public class LlistaActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(view.getContext(), EquipamentActivity.class);
                         i.putExtra("Objecte",cascos.get(position));
+                        //i.putExtra("Llista",equipats);
                         startActivity(i);
                     }
                 });
@@ -59,8 +62,8 @@ public class LlistaActivity extends AppCompatActivity {
 
             //Feim el mateix que al case 1 per a tots els case
             case 2:
-                armadures.add(new Item("armor 1", R.drawable.armadura1, 200, 0, 10, 0, 300,2));
-                armadures.add(new Item("armor 2", R.drawable.armadura, 250, 0, 20, 0, 400,2));
+                armadures.add(new Item("armorNew", R.drawable.armadura1, 0, 0, 0, 0, 300,2));
+                armadures.add(new Item("armor 2", R.drawable.armadura, 0, 0, 0, 0, 400,2));
                 adaptador = new Adaptador(this,R.layout.item_llista, armadures);
                 llista.setAdapter(adaptador);
 
@@ -69,13 +72,14 @@ public class LlistaActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(view.getContext(), EquipamentActivity.class);
                         i.putExtra("Objecte",armadures.get(position));
+                        //i.putExtra("Llista",equipats);
                         startActivity(i);
                     }
                 });
                 break;
             case 3:
-                botes.add(new Item("botes 1", R.drawable.botes1, 20, 0, 0, 50, 75,3));
-                botes.add(new Item("botes 2", R.drawable.botes, 30, 0, 0, 45, 95,3));
+                botes.add(new Item("botesNew", R.drawable.botes1, 0, 0, 0, 0, 50,3));
+                botes.add(new Item("botes 2", R.drawable.botes, 0, 0, 0, 0, 150,3));
                 adaptador = new Adaptador(this, R.layout.item_llista, botes);
                 llista.setAdapter(adaptador);
 
@@ -84,13 +88,14 @@ public class LlistaActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(view.getContext(), EquipamentActivity.class);
                         i.putExtra("Objecte",botes.get(position));
+                        //i.putExtra("Llista",equipats);
                         startActivity(i);
                     }
                 });
                 break;
             case 4:
-                espases.add(new Item("espasa 1", R.drawable.espasa1, 0, 100, 0, 50, 500,4));
-                espases.add(new Item("espasa 2", R.drawable.sword, 0, 50, 0, 0, 200,4));
+                espases.add(new Item("espasaNew", R.drawable.espasa1, 0, 0, 0, 0, 500,4));
+                espases.add(new Item("espasa 2", R.drawable.sword, 0, 0, 0, 0, 200,4));
                 adaptador = new Adaptador(this, R.layout.item_llista, espases);
                 llista.setAdapter(adaptador);
 
@@ -99,13 +104,14 @@ public class LlistaActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(view.getContext(), EquipamentActivity.class);
                         i.putExtra("Objecte",espases.get(position));
+                        //i.putExtra("Llista",equipats);
                         startActivity(i);
                     }
                 });
                 break;
             case 5:
-                secundaria.add(new Item("secun 1", R.drawable.pistola, 0, 100, 0, 0, 100,5));
-                secundaria.add(new Item("secun 2", R.drawable.ballesta, 0, 75, 0, 0, 100,5));
+                secundaria.add(new Item("secunNew", R.drawable.pistola, 0, 0, 0, 0, 100,5));
+                secundaria.add(new Item("secun 2", R.drawable.ballesta, 0, 0, 0, 0, 100,5));
                 adaptador = new Adaptador(this, R.layout.item_llista, secundaria);
                 llista.setAdapter(adaptador);
 
@@ -114,6 +120,7 @@ public class LlistaActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(view.getContext(), EquipamentActivity.class);
                         i.putExtra("Objecte",secundaria.get(position));
+                        //i.putExtra("Llista",equipats);
                         startActivity(i);
                     }
                 });
