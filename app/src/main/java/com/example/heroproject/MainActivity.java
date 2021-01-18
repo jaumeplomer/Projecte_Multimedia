@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Aqui hi ha els listeners de les 5 imatges, que llançen un intent amb un codi per saber quin item s'ha pitjat. Obrin la LlistaActivity.
         clickListeners();
+
+        //Aqui hi ha els listeners dels botons per triar el gènere del personatge
         botonsGenere();
+
         //Cream un item persona amb el seu constructor
         persona = new Item(null,0,20,100,30,20000,R.drawable.persona2);
         pers.setImageResource(persona.getImgPersona());
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         recuperarObjecte();
     }
 
+    //Segons el boto que pitjam carrega una imatge o una altre a la posició de la persona
     public void botonsGenere()
     {
         dona.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         Pastatotal = persona.getPreu() - cost;
     }
 
+    //Segons la imatge clicada, llança l'intent amb un codi que recuperarem per carregar una llista o una altre
     public void clickListeners()
     {
         casc.setOnClickListener(new View.OnClickListener() {

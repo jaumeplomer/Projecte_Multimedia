@@ -63,6 +63,7 @@ public class EquipamentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Si el preu de l'item es major que els diners que tenim, salta un alertdialog i no tel deixa equipar
                 if (preu > MainActivity.Pastatotal)
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
