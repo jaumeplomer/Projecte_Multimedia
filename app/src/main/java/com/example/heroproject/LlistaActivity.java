@@ -62,8 +62,8 @@ public class LlistaActivity extends AppCompatActivity {
 
             //Feim el mateix que al case 1 per a tots els case
             case 2:
-                armadures.add(new Item("armorNew", R.drawable.armadura1, 0, 0, 0, 0, 300,2));
-                armadures.add(new Item("armor 2", R.drawable.armadura, 0, 0, 0, 0, 400,2));
+                armadures.add(new Item("armorNew", R.drawable.armadura1, 100, 0, 0, 0, 300,2));
+                armadures.add(new Item("armor 2", R.drawable.armadura, 200, 0, 0, 0, 400,2));
                 adaptador = new Adaptador(this,R.layout.item_llista, armadures);
                 llista.setAdapter(adaptador);
 

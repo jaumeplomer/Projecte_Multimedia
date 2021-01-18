@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,12 +20,9 @@ public class MainActivity extends AppCompatActivity {
     public Item persona, casco, pit, botes, espasa, secun;
     public static ArrayList<Item> test = new ArrayList<>();
     public TextView cash,atac,armadura,vida,velocitat;
-    public ImageView casc, armor, boots, sword, secundaria;
-    public int cost = 0;
-    public int arm = 0;
-    public int at = 0;
-    public int vd = 0;
-    public int vel = 0;
+    public ImageView casc, armor, boots, sword, secundaria, pers;
+    public Button home, dona;
+    public int cost = 0, arm = 0, at = 0, vd = 0, vel = 0;
     public static int contador = 0;
 
     @Override
@@ -38,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         boots = findViewById(R.id.imageViewBoots);
         sword = findViewById(R.id.imageViewSword);
         secundaria = findViewById(R.id.imageViewBallesta);
+        pers = findViewById(R.id.imageViewPersona);
 
         cash = findViewById(R.id.textViewDineros);
         atac = findViewById(R.id.textViewAtac);
@@ -45,11 +44,15 @@ public class MainActivity extends AppCompatActivity {
         vida = findViewById(R.id.textViewVida);
         velocitat = findViewById(R.id.textViewVelocitat);
 
+        dona = findViewById(R.id.buttonDona);
+        home = findViewById(R.id.buttonHome);
+
         //Aqui hi ha els listeners de les 5 imatges, que llançen un intent amb un codi per saber quin item s'ha pitjat. Obrin la LlistaActivity.
         clickListeners();
-
+        botonsGenere();
         //Cream un item persona amb el seu constructor
-        persona = new Item(null,0,20,100,30,200);
+        persona = new Item(null,0,20,100,30,20000,R.drawable.persona2);
+        pers.setImageResource(persona.getImgPersona());
 
         //Cream cinc item objecte amb el seu constructor
         casco = new Item("casco 1", R.drawable.casco, 0, 0, 0, 0, 0, 1);
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         secun = new Item("secun 1", R.drawable.ballesta, 0, 0, 0, 0, 0,5);
 
         //Ficam els items a la llista d'objectes equipats. Utilitzam un contador perque només s'executi una vegada.
-
         if (contador == 0)
         {
             test.add(casco);
@@ -68,23 +70,35 @@ public class MainActivity extends AppCompatActivity {
             test.add(espasa);
             test.add(secun);
             contador++;
+
             //Cridam els mètodes per sumar valors, assigar-los a l'Item persona, i assignar-los als elements XML.
             sumarValorsItems();
             assignarPersona();
             assignarXml();
         }
 
-        //Dialog per mostrar el nom dels items equipats per fer comprovacions
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("OnCreate");
-        builder.setMessage(test.get(0).nom + " || " + test.get(1).nom);
-        builder.setPositiveButton("Aceptar", null);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();*/
-
         //Cridam el mètode per recuperar els nous objectes que equipem.
         recuperarObjecte();
+    }
+
+    public void botonsGenere()
+    {
+        dona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                persona.setImgPersona(R.drawable.persona2);
+                pers.setImageResource(persona.getImgPersona());
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                persona.setImgPersona(R.drawable.persona);
+                pers.setImageResource(persona.getImgPersona());
+            }
+        });
+
     }
 
     public void recuperarObjecte()
@@ -123,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         //Amb les variables iniciades a 0, recorrem la llista i sumam tots els valors iguals a una variable.
         for (int i = 0; i <= test.size() - 1; i++)
         {
-            cost = cost + test.get(i).getPreu();
+            cost += test.get(i).getPreu();
             arm += test.get(i).getArmadura();
             at += test.get(i).getAtac();
             vd += test.get(i).getVida();

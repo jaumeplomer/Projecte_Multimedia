@@ -59,5 +59,3 @@ public class Adaptador extends ArrayAdapter<Item> {
         return view;
     }
 }
-
-

@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextNom" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewPersona"
         android:layout_width="277dp"
         android:layout_height="511dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,5 +139,26 @@
         app:layout_constraintEnd_toStartOf="@+id/imageViewArmor"
         app:layout_constraintTop_toTopOf="@+id/textViewVida"
         app:srcCompat="@drawable/ballesta" />
+
+    <Button
+        android:id="@+id/buttonHome"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:text="Home"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDona"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewAtac"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSword" />
+
+    <Button
+        android:id="@+id/buttonDona"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Dona"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toEndOf="@+id/imageViewArmor"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ import android.os.Parcelable;
 public class Item implements Parcelable {
 
     String nom;
-    int img, armadura, atac, vida, velocitat, preu, codi, imgCasc, imgArmadura, imgArma, imgSecundaria, imgBotes;
+    int img, armadura, atac, vida, velocitat, preu, codi, imgCasc, imgArmadura, imgArma, imgSecundaria, imgBotes, imgPersona;
 
     //Constructor a utilitzar per els items
     public Item(String nom, int img, int armadura, int atac, int vida, int velocitat, int preu, int codi) {
@@ -23,13 +23,14 @@ public class Item implements Parcelable {
     }
 
     //Constructor a utilitzar per la persona
-    public Item(String nom, int armadura, int atac, int vida, int velocitat, int preu) {
+    public Item(String nom, int armadura, int atac, int vida, int velocitat, int preu, int imgPersona) {
         this.nom = nom;
         this.armadura = armadura;
         this.atac = atac;
         this.vida = vida;
         this.velocitat = velocitat;
         this.preu = preu;
+        this.imgPersona = imgPersona;
     }
 
     protected Item(Parcel in) {
@@ -46,6 +47,7 @@ public class Item implements Parcelable {
         imgArma = in.readInt();
         imgSecundaria = in.readInt();
         imgBotes = in.readInt();
+        imgPersona = in.readInt();
     }
 
     @Override
@@ -63,6 +65,7 @@ public class Item implements Parcelable {
         dest.writeInt(imgArma);
         dest.writeInt(imgSecundaria);
         dest.writeInt(imgBotes);
+        dest.writeInt(imgPersona);
     }
 
     @Override
@@ -183,5 +186,13 @@ public class Item implements Parcelable {
 
     public void setImgBotes(int imgBotes) {
         this.imgBotes = imgBotes;
+    }
+
+    public int getImgPersona() {
+        return imgPersona;
+    }
+
+    public void setImgPersona(int imgPersona) {
+        this.imgPersona = imgPersona;
     }
 }
