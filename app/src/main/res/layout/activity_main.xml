@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextNom"
+    <TextView
+        android:id="@+id/textViewNom"
         android:layout_width="281dp"
         android:layout_height="68dp"
         android:layout_marginTop="25dp"
@@ -27,7 +27,7 @@
         android:text="Dineros"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNom" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNom" />
 
     <ImageView
         android:id="@+id/imageViewPersona"
@@ -160,5 +160,15 @@
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toEndOf="@+id/imageViewArmor"
         app:layout_constraintTop_toBottomOf="@+id/buttonHome" />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:text="Reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
